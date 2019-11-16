@@ -1,0 +1,12 @@
+{
+    "name": "lwn-downloader",
+    "version": "0.0.1",
+    "license": "UNLICENSED",
+    "private": true,
+    "devDependencies": {
+        "puppeteer": "^1.19.0"
+    },
+    "engines": {
+        "node": ">=10.0.0"
+    }
+}
