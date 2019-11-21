@@ -3,10 +3,18 @@
     "version": "0.0.1",
     "license": "UNLICENSED",
     "private": true,
-    "devDependencies": {
+    "dependencies": {
         "puppeteer": "^1.19.0"
+    },
+    "devDependencies": {
+        "eslint": "^6.6.0",
+        "standard": "^14.3.1"
     },
     "engines": {
         "node": ">=10.0.0"
+    },
+    "scripts": {
+        "start": "node index.js",
+        "lint": "standard"
     }
 }

@@ -1,10 +1,10 @@
+'use strict';
 const puppeteer = require('puppeteer');
 
-// TODO: how to load JSON configs?
 const config = require('./config.json');
 
 (async () => {
-    //const headless = false; // Set to false for testing purposes.
+    // const headless = false; // Set to false for testing purposes.
     const headless = true;
     const browser = await puppeteer.launch({
         headless: headless,
@@ -14,8 +14,8 @@ const config = require('./config.json');
     await page.goto('https://lwn.net');
 
     // Log in.
-    let username = await page.type('input[name=\'Username\']', config.username);
-    let password = await page.type('input[name=\'Password\']', config.password);
+    const username = await page.type('input[name=\'Username\']', config.username);
+    const password = await page.type('input[name=\'Password\']', config.password);
     await page.click('input[name=\'submit\']');
 
     // Go to all-one-page for the Weekly Edition.
@@ -23,8 +23,8 @@ const config = require('./config.json');
 
     // Hide menu.
     // TODO: Remove margins.
-    let bodyHandle = await page.$('body');
-    let menuHandle = await page.$('body > div#menu');
+    const bodyHandle = await page.$('body');
+    const menuHandle = await page.$('body > div#menu');
     // https://stackoverflow.com/questions/50015925/how-to-set-values-of-dom-elements-with-puppeteer
     await page.evaluate(
         (body, menu) => {
@@ -35,14 +35,8 @@ const config = require('./config.json');
 
     // Generate PDF
     // puppeteer only supports PDF generation in headless mode.
-    // TODO: Tags
-    // TODO: Links are preserved?
-    // TODO: Date in filename
-    // TODO: Upload to S3 bucket
-    // TODO: Run as Lambda
     if (headless) {
         const pdffile = 'lwn.pdf';
-        // TODO: tweak
         await page.pdf({
             path: pdffile,
             format: 'A4',
