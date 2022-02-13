@@ -38,13 +38,13 @@ const config = require('./config.json');
     if (headless) {
         const pdffile = 'lwn.pdf';
         await page.pdf({
-            path: pdffile,
-            format: 'A4',
-            margin: {
-            top: '1cm',
-            bottom: '1.5cm',
-            left: '1.5cm',
-            right: '1cm'
+                path: pdffile,
+                format: 'A4',
+                margin: {
+                top: '1cm',
+                bottom: '1.5cm',
+                left: '1.5cm',
+                right: '1cm'
             },
             // https://www.api2pdf.com/print-header-footer-page-numbers-on-pdf-with-headless-chrome/
             displayHeaderFooter: true,

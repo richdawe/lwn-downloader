@@ -2,7 +2,7 @@
  * Tags
  * Links are preserved?
  * Date in filename
- * Upload to S3 bucket
+ * Upload to S3 bucket (with gzip compression)
  * Run as Lambda
  * Tweak margins and font/font size
  * EPUB output?
