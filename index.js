@@ -34,25 +34,22 @@ const config = require('./config.json');
         bodyHandle, menuHandle);
 
     // Generate PDF
-    // puppeteer only supports PDF generation in headless mode.
-    if (headless) {
-        const pdffile = 'lwn.pdf';
-        await page.pdf({
-                path: pdffile,
-                format: 'A4',
-                margin: {
-                top: '1cm',
-                bottom: '1.5cm',
-                left: '1.5cm',
-                right: '1cm'
-            },
-            // https://www.api2pdf.com/print-header-footer-page-numbers-on-pdf-with-headless-chrome/
-            displayHeaderFooter: true,
-            headerTemplate: '<div class="page-header"></div>',
-            footerTemplate: '<div class="page-footer" style="width:100%; text-align:center; font-size:10px;"><span class="pageNumber"></span> of <span class="totalPages"></span></div>'
-        });
-        console.log(`PDF written to ${pdffile}`);
-    }
+    const pdffile = 'lwn.pdf';
+    await page.pdf({
+            path: pdffile,
+            format: 'A4',
+            margin: {
+            top: '1cm',
+            bottom: '1.5cm',
+            left: '1.5cm',
+            right: '1cm'
+        },
+        // https://www.api2pdf.com/print-header-footer-page-numbers-on-pdf-with-headless-chrome/
+        displayHeaderFooter: true,
+        headerTemplate: '<div class="page-header"></div>',
+        footerTemplate: '<div class="page-footer" style="width:100%; text-align:center; font-size:10px;"><span class="pageNumber"></span> of <span class="totalPages"></span></div>'
+    });
+    console.log(`PDF written to ${pdffile}`);
 
     await browser.close();
 })();
