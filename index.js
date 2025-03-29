@@ -14,9 +14,12 @@ const config = require('./config.json');
     await page.goto('https://lwn.net');
 
     // Log in.
-    const username = await page.type('input[name=\'Username\']', config.username);
-    const password = await page.type('input[name=\'Password\']', config.password);
-    await page.click('input[name=\'submit\']');
+    const username = await page.type('input[name=\'uname\']', config.username);
+    const password = await page.type('input[name=\'pword\']', config.password);
+    await Promise.all([
+        page.click('input[name=\'submit\']'),
+        page.waitForNavigation(),
+    ]);
 
     // Go to all-one-page for the Weekly Edition.
     await page.goto('https://lwn.net/current/bigpage');
